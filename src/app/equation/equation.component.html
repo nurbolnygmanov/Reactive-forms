@@ -1,0 +1,15 @@
+<h2>Equation game</h2>
+
+<form [formGroup]="mathForm">
+  {{ a }} + {{ b }}
+
+  <input formControlName="answer" />
+</form>
+
+{{ secondsPerSolution | number : "1.1-3" }}
+
+<p>isValid: {{ mathForm.valid }}</p>
+<p>values: {{ mathForm.value | json }}</p>
+<p>Errors: {{ mathForm.errors | json }}</p>
+
+<hr />
