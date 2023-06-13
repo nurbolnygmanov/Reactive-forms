@@ -7,6 +7,7 @@ import { CardFormComponent } from './card-form/card-form.component';
 import { InputComponent } from './input/input.component';
 import { CardComponent } from './card/card.component';
 import { EquationComponent } from './equation/equation.component';
+import { AnswerHighlightDirective } from './answer-highlight.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { EquationComponent } from './equation/equation.component';
     InputComponent,
     CardComponent,
     EquationComponent,
+    AnswerHighlightDirective,
   ],
   imports: [BrowserModule, ReactiveFormsModule, FormsModule],
   providers: [],
