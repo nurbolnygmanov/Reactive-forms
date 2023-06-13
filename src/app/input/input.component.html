@@ -1,0 +1,26 @@
+<p>
+  <label>{{ inputLabel }}</label>
+  <input
+    type="text"
+    [formControl]="control"
+    [ngClass]="{ 'is-danger': showErrors() }"
+  />
+
+  <ng-container *ngIf="showErrors()">
+    <div *ngIf="control.errors?.['required']">
+      please provide {{ inputLabel }}
+    </div>
+    <div *ngIf="control.errors?.['minlength']">
+      value must be longer than
+      {{ control.errors?.["minlength"].requiredLength }}
+    </div>
+    <div *ngIf="control.errors?.['maxlength']">
+      value you have entered is
+      {{ control.errors?.["maxlength"].actualLength }}
+
+      characters long, but it cannot be longet than
+      {{ control.errors?.["maxlength"].requiredLength }} characters
+    </div>
+    <div *ngIf="control.errors?.['pattern']">Invalid format</div>
+  </ng-container>
+</p>
