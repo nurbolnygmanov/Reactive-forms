@@ -1,3 +1,4 @@
+<h2>Reactive form</h2>
 <form (ngSubmit)="onSubmit()" [formGroup]="cardForm">
   <app-input [control]="cardForm.controls.name" inputLabel="Name"></app-input>
 
@@ -27,6 +28,35 @@
   [expiration]="cardForm.controls.expiration.value"
 ></app-card>
 
+<hr />
 <div>Form Contents: {{ cardForm.value | json }}</div>
 <div>Form is valid: {{ cardForm.valid }}</div>
 <div>Errors: {{ cardForm.controls.name.errors | json }}</div>
+
+<h2>Template form</h2>
+<form #emailForm="ngForm" (ngSubmit)="onTemplateSubmit()">
+  <input
+    required
+    type="email"
+    name="email"
+    [(ngModel)]="email"
+    #emailControl="ngModel"
+    [ngClass]="{
+      'is-error': emailControl.invalid && emailControl.touched
+    }"
+  />
+  <ng-container
+    *ngIf="emailControl && emailControl.invalid && emailControl.touched"
+  >
+    <p *ngIf="emailControl.errors && emailControl.errors['required']">
+      Enter required field
+    </p>
+  </ng-container>
+
+  <button [disabled]="emailForm.invalid">Submit</button>
+</form>
+
+<hr />
+<p>Value: {{ email }}</p>
+<p>isValid: {{ emailForm.valid }}</p>
+<p>Error: {{ emailControl.errors | json }}</p>

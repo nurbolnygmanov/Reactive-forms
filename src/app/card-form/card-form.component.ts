@@ -35,4 +35,11 @@ export class CardFormComponent {
   onResetForm() {
     this.cardForm.reset();
   }
+
+  // template forms
+  email: string = '';
+
+  onTemplateSubmit() {
+    console.log(this.email);
+  }
 }
